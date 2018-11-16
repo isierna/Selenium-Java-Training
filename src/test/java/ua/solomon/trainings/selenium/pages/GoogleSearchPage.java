@@ -8,28 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
-public class GoogleSearchPage extends BasePage{
+public class GoogleSearchPage extends BasePage {
+    private final String SEARCH_INPUT_NAME = "q";
+
     public GoogleSearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[@id='lst-ib']")
+    @FindBy(name = SEARCH_INPUT_NAME)
     public WebElement searchInput;
 
     @Override
     public void at() {
-        waitUntil(presenceOfElementLocated(By.xpath("//input[@id=\"lst-ib\"]")));
+        waitUntil(presenceOfElementLocated(By.name(SEARCH_INPUT_NAME)));
     }
 
-    @Override
     public void go() {
         driver.get("https://www.google.com");
         at();
-    }
-
-    @Override
-    public void goTo(WebElement element) {
-
     }
 }

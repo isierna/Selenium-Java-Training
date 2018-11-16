@@ -9,27 +9,23 @@ import org.openqa.selenium.support.PageFactory;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 
-public class GoogleSearchResultsPage extends BasePage{
+public class GoogleSearchResultsPage extends BasePage {
+    private final String SELENIUM_LINK_XPATH = "//a/h3[contains(text(),'Web Browser Automation')]";
+    private final String FOOTER_PAGINATION_ID = "navcnt";
+
     public GoogleSearchResultsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[text()[contains(.,'Web Browser Automation')]]")
+    @FindBy(xpath = SELENIUM_LINK_XPATH)
     public WebElement seleniumHomePageLink;
 
-    @Override
-    public void go() {
-
-    }
+    @FindBy(id = FOOTER_PAGINATION_ID)
+    public WebElement googleFooterPaginationElement;
 
     @Override
     public void at() {
-        waitUntil(presenceOfElementLocated(By.xpath("//div[@id='search']")));
-    }
-
-    @Override
-    public void goTo(WebElement element) {
-
+        waitUntil(presenceOfElementLocated(By.id(FOOTER_PAGINATION_ID)));
     }
 }

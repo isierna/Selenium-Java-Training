@@ -6,42 +6,41 @@ import ua.solomon.trainings.selenium.pages.GoogleSearchPage;
 import ua.solomon.trainings.selenium.pages.GoogleSearchResultsPage;
 import ua.solomon.trainings.selenium.pages.SeleniumDownloadPage;
 import ua.solomon.trainings.selenium.pages.SeleniumHomePage;
-import ua.solomon.trainings.selenium.utils.ProjectUtils;
-
-import java.io.IOException;
+import ua.solomon.trainings.selenium.utils.PomReader;
 
 public class VerifyCurrentSeleniumVersion extends BaseTest {
-        private static GoogleSearchPage googleSearchPage;
-        private static GoogleSearchResultsPage googleSearchResultsPage;
-        private static SeleniumHomePage seleniumHomePage;
-        private static SeleniumDownloadPage seleniumDownloadPage;
-        private String verionNumber;
 
 
-        @Test
-        public void verifyCurrentSeleniumVersion() throws IOException {
-            googleSearchPage = new GoogleSearchPage(driver);
-            googleSearchPage.go();
-            googleSearchPage.at();
+    @Test
+    public void verifyCurrentSeleniumVersion() {
 
-            googleSearchPage.searchInput.click();
-            googleSearchPage.searchInput.sendKeys("Selenium");
-            googleSearchPage.searchInput.submit();
+        //given
 
-            googleSearchResultsPage = new GoogleSearchResultsPage(driver);
-            googleSearchResultsPage.at();
-            googleSearchResultsPage.seleniumHomePageLink.click();
+        GoogleSearchPage googleSearchPage = new GoogleSearchPage(driver);
+        GoogleSearchResultsPage googleSearchResultsPage = new GoogleSearchResultsPage(driver);
+        SeleniumHomePage seleniumHomePage = new SeleniumHomePage(driver);
+        SeleniumDownloadPage seleniumDownloadPage = new SeleniumDownloadPage(driver);
+        PomReader pomReader = new PomReader();
+        String currentProgectSeleniumVersion = pomReader.getSeleniumVersion();
 
-            seleniumHomePage = new SeleniumHomePage(driver);
-            seleniumHomePage.at();
-            seleniumHomePage.downloadTab.click();
+        //when
 
-            seleniumDownloadPage = new SeleniumDownloadPage(driver);
-            seleniumDownloadPage.at();
-            verionNumber = seleniumDownloadPage.versionNumberElement.getText();
+        googleSearchPage.go();
+        googleSearchPage.searchInput.sendKeys("Selenium");
+        googleSearchPage.searchInput.submit();
+        googleSearchResultsPage.at();
+        googleSearchResultsPage.seleniumHomePageLink.click();
+        seleniumHomePage.at();
+        seleniumHomePage.downloadTab.click();
+        seleniumDownloadPage.at();
 
-            ProjectUtils projectUtils = new ProjectUtils();
+        String latestSeleniumVersionFromOfficialSite = seleniumDownloadPage.versionNumberElement.getText();
 
-            Assert.assertEquals(verionNumber, projectUtils.getSystemSeleniumVersion());
-        }
+        System.out.println("Current system version from POM " + currentProgectSeleniumVersion);
+        System.out.println("From site " + latestSeleniumVersionFromOfficialSite);
+
+        //then
+
+        Assert.assertEquals(latestSeleniumVersionFromOfficialSite, currentProgectSeleniumVersion);
+    }
 }

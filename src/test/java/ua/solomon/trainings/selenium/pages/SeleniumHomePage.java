@@ -9,29 +9,21 @@ import org.openqa.selenium.support.PageFactory;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 
-public class SeleniumHomePage extends BasePage{
+public class SeleniumHomePage extends BasePage {
+    private final String MENU_DOWNLOAD_ID = "menu_download";
+
     public SeleniumHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//a[@href='/download/'][1]")
+    @FindBy(id = MENU_DOWNLOAD_ID)
     public WebElement downloadTab;
-
-    @Override
-    public void go() {
-
-    }
 
     @Override
     public void at() {
         String url = driver.getCurrentUrl();
         url.equals("https://www.seleniumhq.org/");
-        waitUntil(presenceOfElementLocated(By.xpath("//*[@class='homepage push']")));
-    }
-
-    @Override
-    public void goTo(WebElement element) {
-
+        waitUntil(presenceOfElementLocated(By.id(MENU_DOWNLOAD_ID)));
     }
 }

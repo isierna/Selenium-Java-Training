@@ -7,4 +7,6 @@
 
 # Project
 target/
+resources/
 
+src/resources/

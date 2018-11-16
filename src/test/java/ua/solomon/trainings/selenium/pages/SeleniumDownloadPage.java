@@ -8,19 +8,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
-public class SeleniumDownloadPage extends BasePage{
+public class SeleniumDownloadPage extends BasePage {
+    private final String VERSION_NUMBER_XPATH = "//td[text()='Java']/following-sibling::td[1]";
+
     public SeleniumDownloadPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//td[text()='Java']/following-sibling::td[1]")
+    @FindBy(xpath = VERSION_NUMBER_XPATH)
     public WebElement versionNumberElement;
-
-    @Override
-    public void go() {
-
-    }
 
     @Override
     public void at() {
@@ -29,8 +26,4 @@ public class SeleniumDownloadPage extends BasePage{
         waitUntil(presenceOfElementLocated(By.xpath("//p[text()[contains(.,'Download version')]]")));
     }
 
-    @Override
-    public void goTo(WebElement element) {
-
-    }
 }
