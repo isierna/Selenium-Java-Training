@@ -9,9 +9,14 @@ import java.io.FileReader;
 import java.util.Properties;
 
 public class PomReader {
+    public String getSeleniumVersion() {
+        Properties properties = getPomData();
+        return properties.getProperty("selenium-java.version");
+    }
+
     private Properties getPomData() {
         Model model = null;
-        FileReader fileReader;
+        FileReader fileReader = null;
         MavenXpp3Reader mavenReader = new MavenXpp3Reader();
 
         try {
@@ -25,11 +30,5 @@ public class PomReader {
 
         MavenProject mavenProject = new MavenProject(model);
         return mavenProject.getProperties();
-    }
-
-
-    public String getSeleniumVersion() {
-        Properties properties = getPomData();
-        return properties.getProperty("selenium.version");
     }
 }

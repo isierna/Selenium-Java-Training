@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <selenium-java.version>3.141.59</selenium-java.version>
+        <selenium-java.version>3.141.5</selenium-java.version>
     </properties>
 
 
