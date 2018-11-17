@@ -8,7 +8,7 @@ import ua.solomon.trainings.selenium.pages.SeleniumDownloadPage;
 import ua.solomon.trainings.selenium.pages.SeleniumHomePage;
 import ua.solomon.trainings.selenium.utils.PomReader;
 
-public class VerifyCurrentSeleniumVersion extends BaseTest {
+public class VerifyCurrentSeleniumVersionTest extends BaseTest {
 
 
     @Test

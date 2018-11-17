@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <selenium-java.version>3.141.5</selenium-java.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
 
@@ -55,6 +55,12 @@
             <artifactId>maven-core</artifactId>
             <version>3.0.3</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M1</version>
         </dependency>
     </dependencies>
 
