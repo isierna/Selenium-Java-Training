@@ -15,23 +15,28 @@ public class VerifyCurrentSeleniumVersionTest extends BaseTest {
     public void verifyCurrentSeleniumVersion() {
 
         //given
-
-        GoogleSearchPage googleSearchPage = new GoogleSearchPage(driver);
-        GoogleSearchResultsPage googleSearchResultsPage = new GoogleSearchResultsPage(driver);
-        SeleniumHomePage seleniumHomePage = new SeleniumHomePage(driver);
-        SeleniumDownloadPage seleniumDownloadPage = new SeleniumDownloadPage(driver);
+        GoogleSearchPage googleSearchPage;
+        GoogleSearchResultsPage googleSearchResultsPage;
+        SeleniumHomePage seleniumHomePage;
+        SeleniumDownloadPage seleniumDownloadPage;
         PomReader pomReader = new PomReader();
         String currentProgectSeleniumVersion = pomReader.getSeleniumVersion();
 
         //when
-
+        googleSearchPage = new GoogleSearchPage(driver);
         googleSearchPage.go();
         googleSearchPage.searchInput.sendKeys("Selenium");
         googleSearchPage.searchInput.submit();
+
+        googleSearchResultsPage = new GoogleSearchResultsPage(driver);
         googleSearchResultsPage.at();
         googleSearchResultsPage.seleniumHomePageLink.click();
+
+        seleniumHomePage = new SeleniumHomePage(driver);
         seleniumHomePage.at();
         seleniumHomePage.downloadTab.click();
+
+        seleniumDownloadPage = new SeleniumDownloadPage(driver);
         seleniumDownloadPage.at();
 
         String latestSeleniumVersionFromOfficialSite = seleniumDownloadPage.versionNumberElement.getText();
@@ -40,7 +45,6 @@ public class VerifyCurrentSeleniumVersionTest extends BaseTest {
         System.out.println("From site " + latestSeleniumVersionFromOfficialSite);
 
         //then
-
         Assert.assertEquals(latestSeleniumVersionFromOfficialSite, currentProgectSeleniumVersion);
     }
 }
