@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ua.solomon.trainings.selenium.utils.Waiter;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -16,6 +17,7 @@ public class GoogleSearchResultsPage extends BasePage {
     public GoogleSearchResultsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        this.waiter = new Waiter(driver);
     }
 
     @FindBy(xpath = SELENIUM_LINK_XPATH)
@@ -26,6 +28,6 @@ public class GoogleSearchResultsPage extends BasePage {
 
     @Override
     public void at() {
-        waitUntil(presenceOfElementLocated(By.id(FOOTER_PAGINATION_ID)));
+        waiter.waitUntil(presenceOfElementLocated(By.id(FOOTER_PAGINATION_ID)));
     }
 }

@@ -15,28 +15,24 @@ public class VerifyCurrentSeleniumVersionTest extends BaseTest {
     public void verifyCurrentSeleniumVersion() {
 
         //given
-        GoogleSearchPage googleSearchPage;
-        GoogleSearchResultsPage googleSearchResultsPage;
-        SeleniumHomePage seleniumHomePage;
-        SeleniumDownloadPage seleniumDownloadPage;
         PomReader pomReader = new PomReader();
         String currentProjectSeleniumVersion = pomReader.getSeleniumVersion();
 
         //when
-        googleSearchPage = new GoogleSearchPage(driver);
+        GoogleSearchPage googleSearchPage = new GoogleSearchPage(driver);
         googleSearchPage.go();
         googleSearchPage.searchInput.sendKeys("Selenium");
         googleSearchPage.searchInput.submit();
 
-        googleSearchResultsPage = new GoogleSearchResultsPage(driver);
+        GoogleSearchResultsPage googleSearchResultsPage = new GoogleSearchResultsPage(driver);
         googleSearchResultsPage.at();
         googleSearchResultsPage.seleniumHomePageLink.click();
 
-        seleniumHomePage = new SeleniumHomePage(driver);
+        SeleniumHomePage seleniumHomePage = new SeleniumHomePage(driver);
         seleniumHomePage.at();
         seleniumHomePage.downloadTab.click();
 
-        seleniumDownloadPage = new SeleniumDownloadPage(driver);
+        SeleniumDownloadPage seleniumDownloadPage = new SeleniumDownloadPage(driver);
         seleniumDownloadPage.at();
 
         String latestSeleniumVersionFromOfficialSite = seleniumDownloadPage.versionNumberElement.getText();

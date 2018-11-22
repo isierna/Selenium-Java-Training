@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ua.solomon.trainings.selenium.utils.Waiter;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -14,6 +15,7 @@ public class SeleniumDownloadPage extends BasePage {
     public SeleniumDownloadPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        this.waiter = new Waiter(driver);
     }
 
     @FindBy(css = VERSION_NUMBER_CSS)
@@ -23,7 +25,7 @@ public class SeleniumDownloadPage extends BasePage {
     public void at() {
         String url = driver.getCurrentUrl();
         url.equals("https://www.seleniumhq.org/download/");
-        waitUntil(presenceOfElementLocated(By.name("client-drivers")));
+        waiter.waitUntil(presenceOfElementLocated(By.name("client-drivers")));
     }
 
 }
