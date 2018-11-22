@@ -1,12 +1,16 @@
 package ua.solomon.trainings.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
-import ua.solomon.trainings.selenium.utils.Waiter;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import ua.solomon.trainings.selenium.utils.WebDriverUtils;
 
 public abstract class BasePage {
     WebDriver driver;
-    Waiter waiter;
 
     public abstract void at();
+
+    public <T> void waitUntil(ExpectedCondition<T> expectedCondition) {
+        WebDriverUtils.waitUntil(driver, expectedCondition);
+    }
 
 }
