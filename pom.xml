@@ -12,6 +12,7 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <maven.version>3.6.0</maven.version>
         <surfire.version>3.0.0-M1</surfire.version>
+        <browser>default</browser>
     </properties>
 
 
@@ -74,7 +75,7 @@
                 <version>1.0.0</version>
                 <executions>
                     <execution>
-                        <phase>test</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>write-project-properties</goal>
                         </goals>
