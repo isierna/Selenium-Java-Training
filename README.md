@@ -1,14 +1,17 @@
 ## Running the tests
 
-1. To run the tests from the console use => 
+To run the tests from the console use => 
 
-mvn test -Dbrowser=chrome
+mvn test -Dbrowser=*browserString*
 
-or
+Replace *browserString* with:
 
-mvn test -Dbrowser=firefox
+- firefox
+- chrome
+- safari
+- IE
 
-2. If no browser has been specified, default Firefox will be used
+ If no browser has been specified, default Firefox will be used
 
 
 

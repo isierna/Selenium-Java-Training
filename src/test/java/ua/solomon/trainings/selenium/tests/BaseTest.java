@@ -3,6 +3,8 @@ package ua.solomon.trainings.selenium.tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,6 +30,12 @@ public abstract class BaseTest {
                 break;
             case "chrome":
                 driver = new ChromeDriver();
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                break;
+            case "IE":
+                driver = new InternetExplorerDriver();
                 break;
             default:
                 driver = new FirefoxDriver();
