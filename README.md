@@ -1,4 +1,5 @@
-Tests Run:
+## Running the tests
+
 1. To run the tests from the console use => 
 
 mvn test -Dbrowser=chrome

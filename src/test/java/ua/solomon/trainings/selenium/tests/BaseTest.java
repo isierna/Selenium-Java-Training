@@ -6,26 +6,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import ua.solomon.trainings.selenium.utils.ProjectUtils;
 import ua.solomon.trainings.selenium.utils.WebDriverUtils;
 
 public abstract class BaseTest {
     public WebDriver driver;
 
-    @Parameters("browser")
-
     @BeforeMethod
     public void createBrowser() {
-        String browser = ProjectUtils.getPropertie("browser");
+        String browser;
 
-        if (browser.equals("firefox")) {
-            driver = new FirefoxDriver();
-        } else if (browser.equals("chrome")) {
-            driver = new ChromeDriver();
-        } else
-            System.out.println("Driver was not set, using the default Firefox");
-        driver = new FirefoxDriver();
+        if (System.getProperty("browser") == null) {
+            browser = ProjectUtils.getProperty("browser").toLowerCase();
+        } else {
+            browser = System.getProperty("browser").toLowerCase();
+        }
+
+        switch (browser) {
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            default:
+                driver = new FirefoxDriver();
+        }
     }
 
     @AfterMethod

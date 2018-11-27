@@ -6,11 +6,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class ProjectUtils {
-    public static String getPropertie(String propertieName) {
+    public static String getProperty(String propertieName) {
         Properties properties = new Properties();
 
         try {
-            InputStream input = new FileInputStream("src/resources/my.properties");
+            InputStream input = new FileInputStream("src/resources/config.properties");
             properties.load(input);
             String propertyValue = properties.getProperty(propertieName);
             return propertyValue;
