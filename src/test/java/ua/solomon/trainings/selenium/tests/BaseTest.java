@@ -38,7 +38,7 @@ public abstract class BaseTest {
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                driver = new ChromeDriver();
+                driver = new FirefoxDriver();
         }
     }
 
