@@ -14,11 +14,10 @@ public abstract class WebDriverUtils {
         if(System.getProperty("timeout") == null) {
             timeoutInSec = Long.parseLong(defaultTimeout);
             wait = new WebDriverWait(driver, timeoutInSec);
-            wait.until(expectedCondition);
         } else {
             timeoutInSec = Long.parseLong(System.getProperty("timeout"));
             wait = new WebDriverWait(driver, timeoutInSec);
-            wait.until(expectedCondition);
         }
+        wait.until(expectedCondition);
     }
 }
