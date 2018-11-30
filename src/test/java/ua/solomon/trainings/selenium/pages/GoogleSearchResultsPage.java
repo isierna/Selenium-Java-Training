@@ -21,9 +21,6 @@ public class GoogleSearchResultsPage extends BasePage {
     @FindBy(xpath = SELENIUM_LINK_XPATH)
     public WebElement seleniumHomePageLink;
 
-    @FindBy(id = FOOTER_PAGINATION_ID)
-    public WebElement googleFooterPaginationElement;
-
     @Override
     public void at() {
         waitUntil(presenceOfElementLocated(By.id(FOOTER_PAGINATION_ID)));

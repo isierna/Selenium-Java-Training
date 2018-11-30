@@ -34,11 +34,11 @@ public abstract class BaseTest {
             case "safari":
                 driver = new SafariDriver();
                 break;
-            case "IE":
+            case "ie":
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                driver = new SafariDriver();
+                driver = new ChromeDriver();
         }
     }
 
@@ -46,9 +46,4 @@ public abstract class BaseTest {
     public void closeBrowser() {
         driver.quit();
     }
-
-    public <T> void waitUntil(ExpectedCondition<T> expectedCondition) {
-        WebDriverUtils.waitUntil(driver, expectedCondition);
-    }
-
 }
