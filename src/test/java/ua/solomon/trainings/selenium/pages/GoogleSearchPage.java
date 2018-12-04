@@ -5,11 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ua.solomon.trainings.selenium.utils.FindProperie;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class GoogleSearchPage extends BasePage {
     private final String SEARCH_INPUT_NAME = "q";
+
+    @FindProperie(prop = "browser")
+    public WebDriver driver;
 
     public GoogleSearchPage(WebDriver driver) {
         this.driver = driver;

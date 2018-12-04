@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+
 public class PomReader {
     public String getSeleniumVersion() {
         Properties properties = getPomData();
@@ -27,4 +28,5 @@ public class PomReader {
             return null;
         }
     }
+
 }

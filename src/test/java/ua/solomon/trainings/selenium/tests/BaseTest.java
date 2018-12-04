@@ -8,20 +8,25 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ua.solomon.trainings.selenium.utils.FindProperie;
 import ua.solomon.trainings.selenium.utils.ProjectUtils;
 import ua.solomon.trainings.selenium.utils.WebDriverUtils;
 
 public abstract class BaseTest {
+
+    @FindProperie(prop = "browser")
     public WebDriver driver;
+
+
 
     @BeforeMethod
     public void createBrowser() {
         String browser;
 
         if (System.getProperty("browser") == null) {
-            browser = ProjectUtils.getProperty("browser").toLowerCase();
+            browser = ProjectUtils.getProperty("browser").toUpperCase();
         } else {
-            browser = System.getProperty("browser").toLowerCase();
+            browser = System.getProperty("browser").toUpperCase();
         }
 
         switch (browser) {
@@ -38,7 +43,7 @@ public abstract class BaseTest {
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                driver = new FirefoxDriver();
+                throw new NullPointerException("Please, specify a browser");
         }
     }
 

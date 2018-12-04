@@ -2,10 +2,12 @@ package ua.solomon.trainings.selenium.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import ua.solomon.trainings.selenium.utils.FindProperie;
 import ua.solomon.trainings.selenium.utils.WebDriverUtils;
 
 public abstract class BasePage {
-    WebDriver driver;
+    @FindProperie(prop = "browser")
+    public WebDriver driver;
 
     public abstract void at();
 
