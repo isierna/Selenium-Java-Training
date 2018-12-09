@@ -7,26 +7,28 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import ua.solomon.trainings.selenium.utils.FindProperie;
-import ua.solomon.trainings.selenium.utils.ProjectUtils;
+
+import ua.solomon.trainings.selenium.utils.FieldInjector;
+import ua.solomon.trainings.selenium.utils.GetProperty;
 import ua.solomon.trainings.selenium.utils.WebDriverUtils;
 
-public abstract class BaseTest {
+public class BaseTest {
+    public static WebDriver driver;
 
-    @FindProperie(prop = "browser")
-    public WebDriver driver;
+    @GetProperty(property = "browser")
+    public String browser;
 
 
+    //@BeforeMethod
+    // in order to call Field injector method we need to create its instance. Apparently with @BeforeMethod instance is not created.
+    // therefore injectFieldValue() that expects an object, doesn't have it
 
-    @BeforeMethod
     public void createBrowser() {
-        String browser;
+        FieldInjector.injectFieldValue(this);
 
-        if (System.getProperty("browser") == null) {
-            browser = ProjectUtils.getProperty("browser").toUpperCase();
-        } else {
-            browser = System.getProperty("browser").toUpperCase();
+
+        if (System.getProperty("browser") != null) {
+            browser = System.getProperty("browser").toLowerCase();
         }
 
         switch (browser) {
@@ -43,7 +45,8 @@ public abstract class BaseTest {
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                throw new NullPointerException("Please, specify a browser");
+                driver = new FirefoxDriver();
+
         }
     }
 

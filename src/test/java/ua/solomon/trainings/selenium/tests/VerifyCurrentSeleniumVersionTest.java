@@ -1,22 +1,22 @@
 package ua.solomon.trainings.selenium.tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.solomon.trainings.selenium.pages.GoogleSearchPage;
 import ua.solomon.trainings.selenium.pages.GoogleSearchResultsPage;
 import ua.solomon.trainings.selenium.pages.SeleniumDownloadPage;
 import ua.solomon.trainings.selenium.pages.SeleniumHomePage;
-import ua.solomon.trainings.selenium.utils.FindProperie;
 import ua.solomon.trainings.selenium.utils.PomReader;
 
 public class VerifyCurrentSeleniumVersionTest extends BaseTest {
-    @FindProperie(prop = "browser")
-    public WebDriver driver;
-
-
     @Test
     public void verifyCurrentSeleniumVersion() {
+        //don't know how to implement injection without BasePage instance
+        BaseTest baseTest = new BaseTest();
+        baseTest.createBrowser();
+
+        System.out.println(driver);
+
         //given
         PomReader pomReader = new PomReader();
         String currentProjectSeleniumVersion = pomReader.getSeleniumVersion();
