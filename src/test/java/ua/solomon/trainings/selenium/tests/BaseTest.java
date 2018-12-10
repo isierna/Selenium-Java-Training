@@ -19,26 +19,26 @@ public abstract class BaseTest {
         String browser;
 
         if (System.getProperty("browser") == null) {
-            browser = ProjectUtils.getProperty("browser").toLowerCase();
+            browser = ProjectUtils.getProperty("browser").toUpperCase();
         } else {
-            browser = System.getProperty("browser").toLowerCase();
+            browser = System.getProperty("browser").toUpperCase();
         }
 
         switch (browser) {
-            case "firefox":
+            case "FIREFOX":
                 driver = new FirefoxDriver();
                 break;
-            case "chrome":
+            case "CHROME":
                 driver = new ChromeDriver();
                 break;
-            case "safari":
+            case "SAFARI":
                 driver = new SafariDriver();
                 break;
             case "IE":
                 driver = new InternetExplorerDriver();
                 break;
             default:
-                driver = new FirefoxDriver();
+                System.out.println("Please specify the browser in config file or in your command");
         }
     }
 
