@@ -3,12 +3,11 @@ package ua.solomon.trainings.selenium.utils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
 // this class and its methods needed to replace annotated variable with the value frpm config.properties
-public class FieldInjector implements GetProperty {
+public class FieldInjector {
     public static void injectFieldValue(Object object) {
         Field[] fields = object.getClass().getDeclaredFields();
 
@@ -35,15 +34,5 @@ public class FieldInjector implements GetProperty {
                 }
             }
         }
-    }
-
-    public String property() {
-        String browser = "www";
-        return browser;
-    }
-
-    @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
     }
 }

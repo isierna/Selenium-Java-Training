@@ -7,7 +7,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.AfterMethod;
-
 import ua.solomon.trainings.selenium.utils.FieldInjector;
 import ua.solomon.trainings.selenium.utils.GetProperty;
 import ua.solomon.trainings.selenium.utils.WebDriverUtils;

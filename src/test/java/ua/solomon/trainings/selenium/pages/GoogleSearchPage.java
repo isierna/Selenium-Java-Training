@@ -11,8 +11,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 public class GoogleSearchPage extends BasePage {
     private final String SEARCH_INPUT_NAME = "q";
 
-    public WebDriver driver;
-
     public GoogleSearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
