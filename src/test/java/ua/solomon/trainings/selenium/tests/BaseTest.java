@@ -39,6 +39,7 @@ public abstract class BaseTest {
                 break;
             default:
                 System.out.println("Please specify the browser in config file or in your command");
+                break;
         }
     }
 
