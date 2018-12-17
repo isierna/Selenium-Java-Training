@@ -24,22 +24,26 @@ public abstract class BaseTest {
             browser = System.getProperty("browser").toUpperCase();
         }
 
-        switch (browser) {
-            case "FIREFOX":
-                driver = new FirefoxDriver();
-                break;
-            case "CHROME":
-                driver = new ChromeDriver();
-                break;
-            case "SAFARI":
-                driver = new SafariDriver();
-                break;
-            case "IE":
-                driver = new InternetExplorerDriver();
-                break;
-            default:
-                System.out.println("Please specify the browser in config file or in your command");
-                break;
+        try {
+            switch (browser) {
+                case "FIREFOX":
+                    driver = new FirefoxDriver();
+                    break;
+                case "CHROME":
+                    driver = new ChromeDriver();
+                    break;
+                case "SAFARI":
+                    driver = new SafariDriver();
+                    break;
+                case "IE":
+                    driver = new InternetExplorerDriver();
+                    break;
+                default:
+                    throw new NullPointerException();
+            }
+        } catch (NullPointerException ex) {
+            System.out.println("Please specify the browser in config file or in your command");
+            ex.printStackTrace();
         }
     }
 
